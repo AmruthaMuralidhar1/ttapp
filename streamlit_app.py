@@ -56,5 +56,5 @@ if st.button("Help"):
 
 # Adding a footer
 st.sidebar.markdown("---")
-st.sidebar.write("Developed by [Your Name](https://yourwebsite.com)")
-st.sidebar.write("Find more about this project on [GitHub](https://github.com/yourgithub)")
+st.sidebar.write("Developed by Amrutha Muralidhar")
+st.sidebar.write("Find more about this project on [GitHub](https://github.com/AmruthaMuralidhar1/ttapp)")
