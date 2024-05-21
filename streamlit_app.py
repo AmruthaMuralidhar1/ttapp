@@ -1,53 +1,60 @@
 import streamlit as st
 
-# Mock function to simulate fetching historical data
-def get_historical_data(location):
-    # You can replace this with actual Snowflake Arctic model usage
-    historical_data = {
-        'context': f"Here is the historical context of {location}.",
-        # Add more historical data fields as needed
+# Define historical places
+historical_places = {
+    "Central Park": {
+        "description": "A large public park in New York City.",
+        "location": "New York, USA"
+    },
+    "Eiffel Tower": {
+        "description": "A wrought-iron lattice tower in Paris, France.",
+        "location": "Paris, France"
+    },
+    "Great Wall of China": {
+        "description": "A series of fortifications made of stone, brick, tamped earth, wood, and other materials.",
+        "location": "China"
+    },
+    "Taj Mahal": {
+        "description": "An ivory-white marble mausoleum on the south bank of the Yamuna river in the Indian city of Agra.",
+        "location": "Agra, India"
+    },
+    "Sydney Opera House": {
+        "description": "A multi-venue performing arts centre in Sydney, Australia.",
+        "location": "Sydney, Australia"
     }
-    return historical_data
+}
 
 # Streamlit UI components
-st.title("Time Traveler's Guide")
-location = st.text_input("Enter your location:")
+st.title("Time Traveler's Guide 🎈")
+
+# Add a sidebar for navigation
+st.sidebar.title("Navigation")
+st.sidebar.markdown("Use this app to explore historical places around the world.")
+
+# User input for location
+location = st.text_input("Enter the location you want to explore:")
+
 if st.button("Explore"):
-    if location:
-        st.write(f"Exploring the history of {location}...")
+    if location in historical_places:
         
-        # Fetch historical data
-        historical_data = get_historical_data(location)
+        # Fetch historical data from the dictionary
+        historical_data = historical_places[location]
         
         # Display historical information using Streamlit
-        if historical_data:
-            st.subheader("Historical Context")
-            st.write(historical_data['context'])
-            
-            # AR integration (placeholder)
-            st.subheader("Augmented Reality")
-            st.write("AR images and videos will be displayed here.")
-            
-            # Interactive storytelling (placeholder)
-            st.subheader("Interactive Storytelling")
-            st.write("Interactive historical anecdotes and stories will be narrated here.")
-            
-            # Personalized tours (placeholder)
-            st.subheader("Personalized Tours")
-            st.write("Personalized tours based on user interests will be provided here.")
-            
-            # Gamification elements (placeholder)
-            st.subheader("Gamification Elements")
-            st.write("Quizzes, challenges, and rewards will be included here.")
-            
-            # Community contributions (placeholder)
-            st.subheader("Community Contributions")
-            st.write("Users can contribute their own historical knowledge and stories here.")
-            
-            # Offline access (placeholder)
-            st.subheader("Offline Access")
-            st.write("Offline access to cached historical content will be available here.")
-        else:
-            st.write("Sorry, historical data for this location is not available.")
+        st.subheader(f"Exploring the history of {location}...")
+        st.write(f"**Name:** {location}")
+        st.write(f"**Description:** {historical_data['description']}")
+        st.write(f"**Location:** {historical_data['location']}")
     else:
-        st.write("Please enter a location.")
+        st.write("Sorry, no historical data available for this location.")
+
+if st.button("About Us"):
+    st.write("This app is designed to help you explore the history of various historical places around the world.")
+
+if st.button("Help"):
+    st.write("If you need assistance or have any questions, please feel free to contact us.")
+
+# Adding a footer
+st.sidebar.markdown("---")
+st.sidebar.write("Developed by [Your Name](https://yourwebsite.com)")
+st.sidebar.write("Find more about this project on [GitHub](https://github.com/yourgithub)")
